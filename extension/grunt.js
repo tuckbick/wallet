@@ -7,6 +7,13 @@ module.exports = function(grunt) {
 
     grunt.extendConfig({
 
+      'watch': {
+        dev: {
+          files: grunt.config.get('config.ext.src')+'/*',
+          tasks: ['build']
+        }
+      },
+
       'clean': {
         dev: [ grunt.config.get('config.ext.build._') ]
       },
@@ -75,6 +82,7 @@ module.exports = function(grunt) {
     // grunt.registerTask('zip'   , ['crx', 'zip']);
     // grunt.registerTask('upload', ['zip', 'webstore_upload']);
 
+    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-crx');
