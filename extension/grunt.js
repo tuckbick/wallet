@@ -18,11 +18,32 @@ module.exports = function(grunt) {
         dev: [ grunt.config.get('config.ext.build._') ]
       },
 
+      'bower': {
+        dev: {
+          options: {
+            targetDir: './extension/bower',
+            layout: 'byComponent',
+            install: true,
+            verbose: false,
+            copy: true,
+            cleanTargetDir: false,
+            cleanBowerDir: false,
+            bowerOptions: {}
+          }
+        }
+      },
+
       'copy': {
         dist: {
           expand: true,
           cwd: grunt.config.get('config.ext.src'),
           src: '**',
+          dest: grunt.config.get('config.ext.build.dist')
+        },
+        bower: {
+          expand: true,
+          cwd: grunt.config.get('config.ext._'),
+          src: 'bower/**',
           dest: grunt.config.get('config.ext.build.dist')
         },
         manifest: {
@@ -84,6 +105,7 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-bower-task');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-crx');
     // grunt.loadNpmTasks('grunt-zip');

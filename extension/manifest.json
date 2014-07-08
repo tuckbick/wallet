@@ -15,7 +15,7 @@
       "matches": ["<all_urls>"],
       "css": ["highlighter.css"],
       "js": [
-        "jquery.js",
+        "bower/jquery/jquery.js",
         "highlighter.js"
       ],
       "run_at": "document_idle"
