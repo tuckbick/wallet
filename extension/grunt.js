@@ -10,7 +10,7 @@ module.exports = function(grunt) {
       'watch': {
         dev: {
           files: grunt.config.get('config.ext.src')+'/*',
-          tasks: ['build']
+          tasks: ['dev']
         }
       },
 
@@ -99,11 +99,14 @@ module.exports = function(grunt) {
       // }
     })
 
-    grunt.registerTask('build' , ['clean', 'copy', 'crx']);
+    grunt.registerTask('dev' , ['clean', 'copy', 'chrome_extension_reload']);
+    grunt.registerTask('prod' , ['clean', 'copy', 'crx']);
+
     // grunt.registerTask('zip'   , ['crx', 'zip']);
     // grunt.registerTask('upload', ['zip', 'webstore_upload']);
 
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-chrome-extension-reload');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-bower-task');
     grunt.loadNpmTasks('grunt-contrib-copy');
