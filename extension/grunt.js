@@ -99,8 +99,10 @@ module.exports = function(grunt) {
       // }
     })
 
-    grunt.registerTask('dev' , ['clean', 'copy', 'chrome_extension_reload']);
-    grunt.registerTask('prod' , ['clean', 'copy', 'crx']);
+    grunt.registerTask('build', ['clean', 'bower', 'copy']);
+
+    grunt.registerTask('dev' , ['build', 'chrome_extension_reload']);
+    grunt.registerTask('prod' , ['build', 'crx']);
 
     // grunt.registerTask('zip'   , ['crx', 'zip']);
     // grunt.registerTask('upload', ['zip', 'webstore_upload']);
